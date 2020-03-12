@@ -1,7 +1,7 @@
 const { red } = require('kleur')
 const axios = require('axios')
 const { utils } = require('dimer-vue')
-const BASE_URL = 'http://localhost:4000'
+const BASE_URL = 'http://localhost:5555'
 
 /**
  * A mapping of zones and the template component they must use

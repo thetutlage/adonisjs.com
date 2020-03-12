@@ -8,7 +8,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "serve": "dimer serve --port=4000",
+    "serve": "dimer serve --port=5555",
     "build": "dimer build"
   },
   "author": "virk",

@@ -28,14 +28,18 @@ The sessions package of AdonisJS is pre-configured for Web application boilerpla
 ### Install the Package
 Install the `@adonisjs/session` package from npm registry using the following command.
 
+[note]
+The `@alpha` tag is required during the preview release.
+[/note]
+
 [codegroup]
 
 ```sh{}{npm}
-npm i @adonisjs/session
+npm i @adonisjs/session@alpha
 ```
 
 ```sh{}{yarn}
-yarn add @adonisjs/session
+yarn add @adonisjs/session@alpha
 ```
 
 [/codegroup]
