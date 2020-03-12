@@ -1,8 +1,6 @@
 ---
 permalink: guides/database/introduction
 group: Database
-under_progress: true
-last_updated_on: 1st March, 2020
 ---
 
 # Introduction
@@ -12,9 +10,9 @@ AdonisJS is one of the few Node.js frameworks (if not the only one) that has fir
 ## Support for Multiple Connections
 Within a single application, you can create and use multiple database connections using different database backends all together. For example: You can have a connection using PostgreSQL and other one using MySQL.
 
-Also, the lifecycle of these connections is entirely managed by Lucid and hence you don't want to worry about initiating or closing connections manually.
+Also, the lifecycle of these connections is entirely managed by Lucid and hence you don't have to worry about initiating or closing connections manually.
 
-Learn more about [Connections management]()
+Learn more about [Connections management](connections-management)
 
 ## Connection pooling
 Connection pooling is a way to optimize queries and also limit the number of concurrent connections a database server can handle. Inside your database config file, you can define the **min** and **max** number of pool connections for AdonisJS to maintain.
@@ -22,17 +20,17 @@ Connection pooling is a way to optimize queries and also limit the number of con
 - The `min` number ensures that these many connections are always alive, even when the application is idle. Since, creating a new connection is an expensive operation, you do want to make sure that a couple of connections are always alive to execute queries.
 - The `max` number ensures that you are not overwhelming your database with too many concurrent connections.
 
-Learn more about [Connections pooling]()
+Learn more about [Connections pooling](connections-management#connection-pooling)
 
 ## Support for Read-Write Replicas
-Read-write replicas are treated as first class citizen with Lucid. Inside your database connection config, you can define config for one write server and multiple read servers.
+Read-write replicas are treated as first class citizen with Lucid. Inside your database connection config, you can define one write server and multiple read servers.
 
 Lucid will round robin between the read servers and all of the read queries will automatically be directed towards one of the read servers.
 
-Learn more about [Read-write replicas]()
+Learn more about [Read-write replicas](connections-management#readwrite-replicas)
 
 ## Database Query Builder
-Lucid comes a database query builder (built on top of [knex](https://knexjs.org/)), that you can use in order to construct SQL queries. For example:
+Lucid comes with a database query builder (built on top of [knex](https://knexjs.org/)), that you can use in order to construct SQL queries. For example:
 
 [codegroup]
 
@@ -75,7 +73,7 @@ const [{ total }] = await Database
 
 [/codegroup]
 
-Learn more about [Database query builder]()
+Learn more about [Database query builder](query-builder)
 
 ## Raw Query Builder
 The database query builder offers a rich API to construct SQL queries, ranging from simple **select all** to **complex joins**.
@@ -206,4 +204,4 @@ export default class Users extends BaseSchema {
 ```
 
 ## Health Checks
-Lucid has inbuilt support for health checks. It will run a sample query on your configured database connection to check its connectivity. All you need to do is enable the `healthcheck` flag inside the config file and then use the AdonisJS central [health check](/guides/basics/health-checks) system to see the status.
+Lucid has inbuilt support for health checks. It will run a sample query on your configured database connection to check its connectivity. All you need to do is enable the `healthcheck` flag inside the config file and then use the AdonisJS central [health check](/guides/health-check) system to see the status.

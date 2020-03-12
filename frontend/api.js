@@ -1,7 +1,7 @@
 const { red } = require('kleur')
 const axios = require('axios')
 const { utils } = require('dimer-vue')
-const BASE_URL = 'http://localhost:5000'
+const BASE_URL = 'http://localhost:4000'
 
 /**
  * A mapping of zones and the template component they must use
@@ -22,28 +22,32 @@ const WEBSITE_VERSION = 'master'
  * zone has a single version only.
  */
 async function getZones () {
-  const { data } = await axios.get(`${BASE_URL}/zones.json`)
-  return data.map(({ name, slug, versions }) => {
-    const component = ZONE_TEMPLATE_MAPPING[slug]
-    const version = versions.find((version) => version.no === WEBSITE_VERSION)
+  try {
+    const { data } = await axios.get(`${BASE_URL}/zones.json`)
+    return data.map(({ name, slug, versions }) => {
+      const component = ZONE_TEMPLATE_MAPPING[slug]
+      const version = versions.find((version) => version.no === WEBSITE_VERSION)
 
-    if (!component) {
-      throw new Error(
-        `${slug} doesn't have a component assigned to it. Open "frontend/api.js" to assign a component`,
-      )
-    }
+      if (!component) {
+        throw new Error(
+          `${slug} doesn't have a component assigned to it. Open "frontend/api.js" to assign a component`,
+        )
+      }
 
-    if (!version) {
-      throw new Error(`${slug} must have a ${WEBSITE_VERSION} in order to be compiled.`)
-    }
+      if (!version) {
+        throw new Error(`${slug} must have a ${WEBSITE_VERSION} in order to be compiled.`)
+      }
 
-    return {
-      name: name,
-      slug: slug,
-      component,
-      version,
-    }
-  })
+      return {
+        name: name,
+        slug: slug,
+        component,
+        version,
+      }
+    })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 /**

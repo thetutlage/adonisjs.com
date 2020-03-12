@@ -41,15 +41,15 @@ The `@each` loop creates an inner `$loop` variable to access the current iterati
 @endeach
 ```
 
-The `$loop.isEven` returns true, when you the current iteration cycle number is even. Following are properties on the `$loop` object.
+The `$loop.isEven` returns true, when the current iteration cycle number is even. Following are properties on the `$loop` object.
 
 [tip]
 You can also use the `inspect` method to inspect the value of a variable. For example `{{ inspect($loop) }}`
 [/tip]
 
 - `index`: The current iteration index. Starts from `0`
-- `isFirst`: Is this the first item of the array
-- `isLast`: Is this the first item of the array
-- `isOdd`: Is the current interation cycle an odd number
+- `isFirst`: True for the first item of the array
+- `isLast`: True for the last item of the array
+- `isOdd`: True when the iteration cycle is an odd number
 - `isEven`: The opposite of `isOdd`
 - `total`: The total number of rows
